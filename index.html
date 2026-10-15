@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102d2b">
+<meta name="description" content="هوشیار AI، دوست هوش مصنوعی فارسی‌زبان برای گفت‌وگو، یادگیری و ایده‌پردازی.">
+<title>هوشیار AI | دوست هوش مصنوعی تو</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1718;--panel:#122526;--panel2:#193233;--line:#294344;--text:#edf8f5;--muted:#a8c0bb;--mint:#9ef0d0;--mint2:#53c8a5;--user:#244d48;--shadow:0 18px 60px #0004}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1c4640 0,transparent 38%),var(--bg);font-family:Tahoma,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+button,textarea{font:inherit}button{cursor:pointer}
+.app{max-width:1020px;margin:auto;min-height:100vh;padding:20px;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 2px 22px}
+.brand{display:flex;align-items:center;gap:12px}.logo{height:48px;width:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#a7f5d7,#51bd9d);color:#102b28;font-size:25px;font-weight:900;box-shadow:0 8px 28px #53c8a533}
+.brand h1{font-size:20px;margin:0 0 5px}.brand p{font-size:12px;margin:0;color:var(--muted)}
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}.small-btn{background:#122526;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:9px 12px;font-size:12px}
+main{flex:1;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:26px;background:#0e1d1edb;box-shadow:var(--shadow);overflow:hidden;min-height:570px}
+.welcome{padding:28px 24px 18px;text-align:center;border-bottom:1px solid #29434488}.orb{width:72px;height:72px;margin:0 auto 15px;border-radius:24px;background:linear-gradient(140deg,#b2f6dc,#49bb9a);display:grid;place-items:center;font-size:34px;color:#102b28}.welcome h2{font-size:23px;margin:0 0 10px}.welcome p{color:var(--muted);line-height:1.9;margin:0 auto;max-width:560px;font-size:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}.chip{background:#17302f;color:#d5eee6;border:1px solid #31524c;padding:10px 13px;border-radius:999px;font-size:12px}
+.messages{padding:22px;display:flex;flex-direction:column;gap:14px;flex:1;overflow:auto;max-height:52vh;min-height:190px}
+.msg{max-width:84%;display:flex;flex-direction:column;gap:5px}.msg.user{align-self:flex-start}.msg.assistant{align-self:flex-end}.who{font-size:11px;color:var(--muted);padding:0 7px}.bubble{padding:13px 16px;border-radius:18px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}.user .bubble{background:var(--user);border-bottom-left-radius:5px}.assistant .bubble{background:#192b2c;border:1px solid #2a4443;border-bottom-right-radius:5px}
+.composer-wrap{padding:15px;border-top:1px solid var(--line);background:#102021}.composer{display:flex;gap:10px;align-items:flex-end;background:#0b1718;border:1px solid #34504e;border-radius:18px;padding:8px}.composer:focus-within{border-color:var(--mint2);box-shadow:0 0 0 3px #53c8a51a}textarea{resize:none;flex:1;min-height:42px;max-height:130px;border:0;outline:0;color:var(--text);background:transparent;padding:10px;line-height:1.7}textarea::placeholder{color:#78918b}.send{border:0;background:var(--mint);color:#10322b;border-radius:13px;padding:12px 17px;font-weight:800}.send:disabled{opacity:.5;cursor:wait}.hint{font-size:10px;color:#829c95;text-align:center;margin-top:9px}
+footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#7f9b94;font-size:11px;padding:15px 4px}.status{display:inline-flex;align-items:center;gap:6px}.dot{width:7px;height:7px;border-radius:50%;background:#f0c56b;display:inline-block}.dot.live{background:#65e0b2}
+@media(max-width:600px){.app{padding:12px}.brand h1{font-size:17px}.logo{width:42px;height:42px}.header-actions .small-btn{padding:8px;font-size:11px}main{min-height:70vh;border-radius:20px}.welcome{padding:24px 15px 16px}.welcome h2{font-size:20px}.messages{padding:15px;max-height:45vh}.msg{max-width:94%}.composer-wrap{padding:10px}.send{padding:12px}.brand p{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><div class="logo">ه</div><div><h1>هوشیار AI</h1><p>دوست هوش مصنوعی تو ✨</p></div></div>
+  <div class="header-actions"><button class="small-btn" id="exportBtn">ذخیره گفت‌وگو</button><button class="small-btn" id="clearBtn">گفت‌وگوی تازه</button></div>
+</header>
+<main>
+  <section class="welcome" id="welcome">
+    <div class="orb">✦</div>
+    <h2>سلام! من هوشیارم 👋</h2>
+    <p>اینجا می‌تونی سؤال بپرسی، چیزهای تازه یاد بگیری، ایده پیدا کنی یا فقط کمی گپ بزنی. از چی شروع کنیم؟</p>
+    <div class="chips">
+      <button class="chip">📚 کمکم کن چیزی یاد بگیرم</button>
+      <button class="chip">💡 چند ایده جالب بده</button>
+      <button class="chip">🌿 یه گفت‌وگوی دوستانه</button>
+    </div>
+  </section>
+  <section class="messages" id="messages" aria-live="polite"></section>
+  <div class="composer-wrap">
+    <form class="composer" id="chatForm"><textarea id="messageInput" rows="1" maxlength="4000" placeholder="پیامت رو برای هوشیار بنویس..." aria-label="پیام"></textarea><button class="send" id="sendBtn" type="submit">ارسال ↑</button></form>
+    <div class="hint">لطفاً اطلاعات خصوصی، رمز عبور یا کدهای تأیید را در چت وارد نکن.</div>
+  </div>
+</main>
+<footer><span class="status"><i class="dot" id="statusDot"></i><span id="statusText">حالت آزمایشی تا زمان اتصال هوش مصنوعی</span></span><span>ساخته‌شده با 💚 برای یادگیری و گفت‌وگو</span></footer>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const messagesEl = $("messages"), welcome = $("welcome"), input = $("messageInput"), sendBtn = $("sendBtn");
+let history = [];
+try { history = JSON.parse(localStorage.getItem("hoshyar_history") || "[]"); if (!Array.isArray(history)) history = []; } catch { history = []; }
+history = history.filter(m => m && ["user","assistant"].includes(m.role) && typeof m.content === "string").slice(-80);
+function persist(){ try { localStorage.setItem("hoshyar_history", JSON.stringify(history)); } catch {} }
+function renderMessage(m){
+  welcome.style.display = "none";
+  const wrap = document.createElement("div"); wrap.className = "msg " + m.role;
+  const who = document.createElement("div"); who.className = "who"; who.textContent = m.role === "user" ? "تو" : "هوشیار AI";
+  const bubble = document.createElement("div"); bubble.className = "bubble"; bubble.textContent = m.content;
+  wrap.append(who,bubble); messagesEl.appendChild(wrap); messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+function addMessage(role,content){ const m={role,content}; history.push(m); history=history.slice(-80); persist(); renderMessage(m); }
+history.forEach(renderMessage);
+async function refreshStatus(){
+ try { const r=await fetch("/api/status"); const s=await r.json();
+   $("statusDot").classList.toggle("live",s.configured);
+   $("statusText").textContent=s.configured ? "هوش مصنوعی متصل است" : "حالت آزمایشی؛ اتصال هوش مصنوعی کامل نشده";
+ } catch { $("statusText").textContent="وضعیت اتصال مشخص نیست"; }
+}
+async function sendMessage(text){
+ const clean=text.trim(); if(!clean || sendBtn.disabled) return;
+ addMessage("user",clean); input.value=""; input.style.height="auto"; sendBtn.disabled=true; sendBtn.textContent="...";
+ const waiting={role:"assistant",content:"دارم فکر می‌کنم…"};
+ const waitWrap=document.createElement("div"); waitWrap.className="msg assistant"; waitWrap.id="waiting";
+ const who=document.createElement("div");who.className="who";who.textContent="هوشیار AI";
+ const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=waiting.content;waitWrap.append(who,bubble);messagesEl.appendChild(waitWrap);messagesEl.scrollTop=messagesEl.scrollHeight;
+ try {
+   const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:history.slice(-16)})});
+   const data=await r.json(); if(!r.ok) throw new Error(data.error || "پاسخ دریافت نشد");
+   waitWrap.remove(); addMessage("assistant",data.reply || "پاسخی دریافت نشد.");
+ } catch(e){ waitWrap.remove(); addMessage("assistant","اتصال برقرار نشد. اگر سایت را تازه منتشر کرده‌ای، مطمئن شو سرور اجراست. ("+e.message+")"); }
+ finally {sendBtn.disabled=false;sendBtn.textContent="ارسال ↑";input.focus();}
+}
+$("chatForm").addEventListener("submit",e=>{e.preventDefault();sendMessage(input.value);});
+input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("chatForm").requestSubmit();}});
+input.addEventListener("input",()=>{input.style.height="auto";input.style.height=Math.min(input.scrollHeight,130)+"px";});
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{sendMessage(b.textContent.replace(/^[^ ]+ /,""));}));
+$("clearBtn").addEventListener("click",()=>{if(!confirm("گفت‌وگوی ذخیره‌شده روی همین دستگاه پاک شود؟"))return;history=[];persist();messagesEl.replaceChildren();welcome.style.display="";});
+$("exportBtn").addEventListener("click",()=>{const content=history.map(m=>(m.role==="user"?"تو":"هوشیار AI")+":\n"+m.content).join("\n\n");const blob=new Blob([content||"هنوز گفت‌وگویی وجود ندارد."],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="hoshyar-ai-chat.txt";a.click();URL.revokeObjectURL(url);});
+refreshStatus();
+</script>
+</body>
+</html>
